@@ -111,7 +111,7 @@ Applying TensorFlow models to my robot (speech recognition, etc)
 Third week: Finetune/breathing room
 A week for fine tuning, adjustments tests, room to breath. Making a movie
 
-4.0 Research questions
+## 4.0 Research questions
 I will make a remix of the CAD data that I downloaded from the thingiverse website. How will I make a computer-aided remix of the design that is fit for my purpose?
 
 In the blueprint of this device, There are a lot of components that are not meant for starters. What is the functionality of these components and in which scenarios would you use them?
