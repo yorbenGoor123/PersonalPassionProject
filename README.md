@@ -1,6 +1,6 @@
-#Core challenge
+##Core challenge
 The usage of tinyML in a creative project that highlights the strenghts of these technologies.
-https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.hackster.io%2Fnews%2Feasy-tinyml-on-esp32-and-arduino-a9dbc509f26c&psig=AOvVaw1yaBrE2Xi4m-_QCVW_0XnN&ust=1605093750835000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLjm3LPu9-wCFQAAAAAdAAAAABAD
+![alt text](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.hackster.io%2Fnews%2Feasy-tinyml-on-esp32-and-arduino-a9dbc509f26c&psig=AOvVaw1yaBrE2Xi4m-_QCVW_0XnN&ust=1605093750835000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLjm3LPu9-wCFQAAAAAdAAAAABAD)
 ##But, what are the strenghts of this technology
 *Instant reaction time 20ms
 *No internet connection required
@@ -19,7 +19,7 @@ Those 2 weeks are the weeks where i am most passionate about.
 Week03 unity3d was also a week where I was looking forward to.
 So adding a gamification factor can be a possibility. 
 
-#Goal (objectives)
+##Goal (objectives)
 *Gamification
 *Arduino (exploring new components)
 *Machine learning (tinyML with tensorflow lite)
