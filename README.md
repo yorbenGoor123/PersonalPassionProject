@@ -20,9 +20,9 @@ Week03 unity3d was also a week where I was looking forward to.
 So adding a gamification factor can be a possibility. 
 
 ## Goal (objectives)
-*Gamification
-*Arduino (exploring new components)
-*Machine learning (tinyML with tensorflow lite)
+* Gamification
+* Arduino (exploring new components)
+* Machine learning (tinyML with tensorflow lite)
 
 
 
