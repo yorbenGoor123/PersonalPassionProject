@@ -1,6 +1,6 @@
 ## Core challenge
 The usage of tinyML in a creative project that highlights the strenghts of these technologies.
-![alt text](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.hackster.io%2Fnews%2Feasy-tinyml-on-esp32-and-arduino-a9dbc509f26c&psig=AOvVaw1yaBrE2Xi4m-_QCVW_0XnN&ust=1605093750835000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLjm3LPu9-wCFQAAAAAdAAAAABAD)
+![alt text](https://miro.medium.com/max/3892/1*ofX7aZroN2tkwOjJhECmNQ.png)
 ##But, what are the strenghts of this technology
 *Instant reaction time 20ms
 *No internet connection required
