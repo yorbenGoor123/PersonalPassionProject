@@ -1,7 +1,8 @@
 ## Core challenge
 The usage of tinyML in a creative project that highlights the strenghts of these technologies.
 ![alt text](https://miro.medium.com/max/3892/1*ofX7aZroN2tkwOjJhECmNQ.png)
-##But, what are the strenghts of this technology
+## strenghts
+But, what are the strenghts of this technology?
 *Instant reaction time 20ms
 *No internet connection required
 *Ble senseboard has tons of sensors that is very interesting for IOT
@@ -14,7 +15,6 @@ But how can I apply this technology into a creative personal passion project?
 
 ## Combining powers
 Week01 arduino mixed with week05 machine learning
-
 Those 2 weeks are the weeks where i am most passionate about.
 Week03 unity3d was also a week where I was looking forward to.
 So adding a gamification factor can be a possibility. 
