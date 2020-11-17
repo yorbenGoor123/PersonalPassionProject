@@ -1,4 +1,5 @@
 # Robot Coach
+Blog URL: https://sanity-gatsby-blog-web-eew265fj.netlify.app/
 ## Core challenge
 The usage of tinyML in a creative project that highlights the strenghts of these technologies.
 ![alt text](https://miro.medium.com/max/3892/1*ofX7aZroN2tkwOjJhECmNQ.png)
