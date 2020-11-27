@@ -23,9 +23,12 @@
 /* Includes ---------------------------------------------------------------- */
 #include <accelerometer_inference.h>
 #include <Arduino_LSM9DS1.h>
+#include <Wire.h>
 
 /* Constant defines -------------------------------------------------------- */
 #define CONVERT_G_TO_MS2    9.80665f
+
+int x = 0;
 
 /* Private variables ------------------------------------------------------- */
 static bool debug_nn = false; // Set this to true to see e.g. features generated from the raw signal
@@ -38,10 +41,12 @@ static float buffer[EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE] = { 0 };
 */
 void setup()
 {
+   
     delay(5000);
 
     // put your setup code here, to run once:
     Serial.begin(115200);
+    Wire.begin();
     Serial.println("Edge Impulse Inferencing Demo");
 
     if (!IMU.begin()) {
@@ -115,13 +120,36 @@ void run_inference()
             result.timing.dsp, result.timing.classification, result.timing.anomaly);
         for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
             ei_printf("    %s: %.5f\n", result.classification[ix].label, result.classification[ix].value);
+
+
+           if(result.classification[0].value > 0.80) {
+              //left
+              x=10;
+           }
+
+           if(result.classification[2].value > 0.80) {
+              //updown
+              x=11;
+           }
+
+           if(result.classification[1].value > 0.40) {
+              //stationary
+              x=12;
+           }
         }
 #if EI_CLASSIFIER_HAS_ANOMALY == 1
         ei_printf("    anomaly score: %.3f\n", result.anomaly);
 #endif
 
+  Serial.print(x);
+  Wire.beginTransmission(9); // transmit to device #9
+  Wire.write(x);              // sends x 
+  Wire.endTransmission(); 
+
         delay(run_inference_every_ms);
     }
+
+ 
 }
 
 /**
@@ -154,6 +182,7 @@ void loop()
         delay((int)floor((float)time_to_wait / 1000.0f));
         delayMicroseconds(time_to_wait % 1000);
     }
+  
 }
 
 #if !defined(EI_CLASSIFIER_SENSOR) || EI_CLASSIFIER_SENSOR != EI_CLASSIFIER_SENSOR_ACCELEROMETER
