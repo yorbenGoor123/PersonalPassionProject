@@ -26,6 +26,7 @@ void setup()
   Serial.begin(115200);
   Wire.begin(9);
   Wire.onReceive(receiveEvent);
+  
   randomSeed(analogRead(0));
   Config_Init();
   LCD_Init();
@@ -48,6 +49,8 @@ void setup()
   //Paint_DrawCircle(195,125, 25, GREEN,   DRAW_FILL_EMPTY, DOT_PIXEL_2X2);
   
   //Paint_DrawImage(gImage_70X70, 20, 80, 70, 70); 
+
+  
 
 }
 
@@ -151,14 +154,14 @@ void bopIt() {
     if(randomChoice == 10) {
       //Serial.print("left and right");
      
-       Paint_DrawString_EN(30, 34, "left and right", &Font24, BLUE, CYAN);
+       Paint_DrawString_EN(30, 34, "backnforward", &Font24, BLUE, CYAN);
        
     }
 
     if(randomChoice == 11) {
       //Serial.print("Up and down"); 
       
-      Paint_DrawString_EN(30, 34, "up and down", &Font24, BLUE, CYAN);
+      Paint_DrawString_EN(30, 34, "upndown", &Font24, BLUE, CYAN);
        
     }
 
@@ -172,10 +175,16 @@ void bopIt() {
 
     if(randomChoice == receivedValue) {
       Serial.print("you win!");
-      Paint_Clear(GREEN);
+      if(delaySong == 0) {
+        victory();
+        Paint_DrawString_EN(30, 34, "VICTORY!", &Font24, BLUE, GREEN);
+      }else {
+       Paint_Clear(GREEN);
       delaySong = delaySong - 20;
       right();
       delay(300);
+      }
+
     }else {
       Serial.print("you lose!");
       wrong();
@@ -235,6 +244,33 @@ void wrong() {
     delay(delayChoice);
     tone(tonePin, 143, 225.0);
     delay(delayChoice);
+}
+
+void victory () {
+   tone(tonePin, 220, 225.0);
+    delay(250.0);
+    tone(tonePin, 277, 112.5);
+    delay(125.0);
+    tone(tonePin, 293, 112.5);
+    delay(125.0);
+    tone(tonePin, 329, 225.0);
+    delay(250.0);
+    tone(tonePin, 220, 225.0);
+    delay(250.0);
+    tone(tonePin, 277, 112.5);
+    delay(125.0);
+    tone(tonePin, 293, 112.5);
+    delay(125.0);
+    tone(tonePin, 329, 225.0);
+    delay(250.0);
+    tone(tonePin, 220, 225.0);
+    delay(250.0);
+    tone(tonePin, 277, 112.5);
+    delay(125.0);
+    tone(tonePin, 293, 112.5);
+    delay(125.0);
+    tone(tonePin, 329, 225.0);
+    delay(250.0);
 }
 
 

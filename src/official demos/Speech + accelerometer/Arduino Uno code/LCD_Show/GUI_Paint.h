@@ -1,36 +1,4 @@
-/*****************************************************************************
-* | File        :   GUI_Paint.h
-* | Author      :   Waveshare team
-* | Function    : Achieve drawing: draw points, lines, boxes, circles and
-*                   their size, solid dotted line, solid rectangle hollow
-*                   rectangle, solid circle hollow circle.
-* | Info        :
-*   Achieve display characters: Display a single character, string, number
-*   Achieve time display: adaptive size display time minutes and seconds
-*----------------
-* | This version:   V1.0
-* | Date        :   2018-11-15
-* | Info        :    
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documnetation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to  whom the Software is
-* furished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS OR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*
-******************************************************************************/
+
 #ifndef __GUI_PAINT_H
 #define __GUI_PAINT_H
 
@@ -187,9 +155,3 @@ void Paint_DrawImage(const unsigned char *image,UWORD Startx, UWORD Starty,UWORD
 
 
 #endif
-
-
-
-
-
-
