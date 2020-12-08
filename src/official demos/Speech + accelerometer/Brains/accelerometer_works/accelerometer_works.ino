@@ -122,29 +122,40 @@ void run_inference()
             ei_printf("    %s: %.5f\n", result.classification[ix].label, result.classification[ix].value);
 
 
-           if(result.classification[0].value > 0.80) {
-              //left
+           if(result.classification[1].value > 0.80) {
+              //backnforward
               x=10;
            }
 
-           if(result.classification[2].value > 0.80) {
+           if(result.classification[3].value > 0.80) {
               //updown
               x=11;
            }
 
-           if(result.classification[1].value > 0.40) {
-              //stationary
+           if(result.classification[4].value > 0.80) {
+              //wave
               x=12;
+           }
+
+           if(result.classification[0].value > 0.80) {
+              //leftRight
+              x=13;
+           }
+           
+           if(result.classification[2].value > 0.40) {
+              //normal
+              x=14;
            }
         }
 #if EI_CLASSIFIER_HAS_ANOMALY == 1
         ei_printf("    anomaly score: %.3f\n", result.anomaly);
 #endif
 
+
   Serial.print(x);
   Wire.beginTransmission(9); // transmit to device #9
   Wire.write(x);              // sends x 
-  Wire.endTransmission(); 
+  Wire.endTransmission();
 
         delay(run_inference_every_ms);
     }
@@ -173,6 +184,7 @@ void loop()
             buffer[EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE - 1]
         );
 
+  
         buffer[EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE - 3] *= CONVERT_G_TO_MS2;
         buffer[EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE - 2] *= CONVERT_G_TO_MS2;
         buffer[EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE - 1] *= CONVERT_G_TO_MS2;
@@ -182,7 +194,7 @@ void loop()
         delay((int)floor((float)time_to_wait / 1000.0f));
         delayMicroseconds(time_to_wait % 1000);
     }
-  
+
 }
 
 #if !defined(EI_CLASSIFIER_SENSOR) || EI_CLASSIFIER_SENSOR != EI_CLASSIFIER_SENSOR_ACCELEROMETER

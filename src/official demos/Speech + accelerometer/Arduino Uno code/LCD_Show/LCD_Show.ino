@@ -73,7 +73,7 @@ void loop()
    }
 
 
-  if(receivedValue == 10 || receivedValue == 11 || receivedValue == 12) {
+  if(receivedValue == 10 || receivedValue == 11 || receivedValue == 12 || receivedValue == 13 || receivedValue == 14) {
     bopIt();  
   }
 
@@ -147,12 +147,12 @@ void bopIt() {
   
   //Serial.print("hello world");
 
-   int randomChoice = random(10,12);
-    //Serial.print(randomChoice);
+   int randomChoice = random(10,14);
+    Serial.print(randomChoice);
  
     Paint_Clear(WHITE);
     if(randomChoice == 10) {
-      //Serial.print("left and right");
+      //Serial.print("backfroward");
      
        Paint_DrawString_EN(30, 34, "backnforward", &Font24, BLUE, CYAN);
        
@@ -163,6 +163,20 @@ void bopIt() {
       
       Paint_DrawString_EN(30, 34, "upndown", &Font24, BLUE, CYAN);
        
+    }
+
+
+    if(randomChoice == 13) {
+      //Serial.print("leftRight"); 
+      
+      Paint_DrawString_EN(30, 34, "leftnright", &Font24, BLUE, CYAN);
+       
+    }
+
+    if(randomChoice == 12) {
+      //Serial.print("leftRight"); 
+      
+      Paint_DrawString_EN(30, 34, "wave!", &Font24, BLUE, CYAN); 
     }
 
     delay(200);
