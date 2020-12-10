@@ -85,8 +85,8 @@ void loop()
 void speechRecognition () {
 
      if(receivedValue == 1 ) {
-      myservo.write(95); 
-      myservo2.write(85);
+      myservo.write(92); 
+      myservo2.write(88);
       delay(200);
     }
 
