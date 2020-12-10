@@ -1,29 +1,9 @@
-/* Edge Impulse Arduino examples
- * Copyright (c) 2020 EdgeImpulse Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
 
-// If your target is limited in memory remove this macro to save 10K RAM
+
+
 #define EIDSP_QUANTIZE_FILTERBANK   0
 
-/* Includes ---------------------------------------------------------------- */
+
 #include <PDM.h>
 #include <controls_inference.h>
 
@@ -33,7 +13,7 @@
 //int buttonState = 0;  
 int x = 0;
 
-/** Audio buffers, pointers and selectors */
+
 typedef struct {
     int16_t *buffer;
     uint8_t buf_ready;
@@ -45,15 +25,12 @@ static inference_t inference;
 static signed short sampleBuffer[2048];
 static bool debug_nn = false; // Set this to true to see e.g. features generated from the raw signal
 
-/**
- * @brief      Arduino setup function
- */
 void setup()
 {
   
 
     //pinMode(buttonPin, INPUT);
-    // put your setup code here, to run once:
+    
     Serial.begin(115200);
 
     Wire.begin();
@@ -73,9 +50,7 @@ void setup()
     }
 }
 
-/**
- * @brief      Arduino main function. Runs the inferencing loop.
- */
+
 void loop()
 {
 
@@ -150,11 +125,7 @@ void loop()
   Serial.print(x);
 }
 
-/**
- * @brief      Printf function uses vsnprintf and output using Arduino Serial
- *
- * @param[in]  format     Variable argument list
- */
+
 void ei_printf(const char *format, ...) {
     static char print_buf[1024] = { 0 };
 
@@ -168,10 +139,6 @@ void ei_printf(const char *format, ...) {
     }
 }
 
-/**
- * @brief      PDM buffer full callback
- *             Get data and call audio thread callback
- */
 static void pdm_data_ready_inference_callback(void)
 {
     int bytesAvailable = PDM.available();
@@ -192,13 +159,7 @@ static void pdm_data_ready_inference_callback(void)
     }
 }
 
-/**
- * @brief      Init inferencing struct and setup/start PDM
- *
- * @param[in]  n_samples  The n samples
- *
- * @return     { description_of_the_return_value }
- */
+
 static bool microphone_inference_start(uint32_t n_samples)
 {
     inference.buffer = (int16_t *)malloc(n_samples * sizeof(int16_t));
@@ -231,11 +192,6 @@ static bool microphone_inference_start(uint32_t n_samples)
     return true;
 }
 
-/**
- * @brief      Wait on new data
- *
- * @return     True when finished
- */
 static bool microphone_inference_record(void)
 {
     inference.buf_ready = 0;
@@ -248,9 +204,7 @@ static bool microphone_inference_record(void)
     return true;
 }
 
-/**
- * Get raw audio signal data
- */
+
 static int microphone_audio_signal_get_data(size_t offset, size_t length, float *out_ptr)
 {
     numpy::int16_to_float(&inference.buffer[offset], out_ptr, length);
@@ -258,9 +212,7 @@ static int microphone_audio_signal_get_data(size_t offset, size_t length, float 
     return 0;
 }
 
-/**
- * @brief      Stop PDM and release buffers
- */
+
 static void microphone_inference_end(void)
 {
     PDM.end();

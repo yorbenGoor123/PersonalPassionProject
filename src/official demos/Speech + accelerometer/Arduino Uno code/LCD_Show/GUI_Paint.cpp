@@ -10,14 +10,7 @@
 
 volatile PAINT Paint;
 
-/******************************************************************************
-  function: Create Image
-  parameter:
-    image   :   Pointer to the image cache
-    width   :   The width of the picture
-    Height  :   The height of the picture
-    Color   :   Whether the picture is inverted
-******************************************************************************/
+
 void Paint_NewImage(UWORD Width, UWORD Height, UWORD Rotate, UWORD Color)
 {
   Paint.WidthMemory = Width;
@@ -38,11 +31,6 @@ void Paint_NewImage(UWORD Width, UWORD Height, UWORD Rotate, UWORD Color)
   }
 }
 
-/******************************************************************************
-  function: Select Image Rotate
-  parameter:
-    Rotate   :   0,90,180,270
-******************************************************************************/
 void Paint_SetRotate(UWORD Rotate)
 {
   if (Rotate == ROTATE_0 || Rotate == ROTATE_90 || Rotate == ROTATE_180 || Rotate == ROTATE_270) {
@@ -54,11 +42,7 @@ void Paint_SetRotate(UWORD Rotate)
   }
 }
 
-/******************************************************************************
-  function: Select Image mirror
-  parameter:
-    mirror   :       Not mirror,Horizontal mirror,Vertical mirror,Origin mirror
-******************************************************************************/
+
 void Paint_SetMirroring(UBYTE mirror)
 {
   if (mirror == MIRROR_NONE || mirror == MIRROR_HORIZONTAL ||
@@ -72,13 +56,7 @@ void Paint_SetMirroring(UBYTE mirror)
   }
 }
 
-/******************************************************************************
-  function: Draw Pixels
-  parameter:
-    Xpoint  :   At point X
-    Ypoint  :   At point Y
-    Color   :   Painted colors
-******************************************************************************/
+
 void Paint_SetPixel(UWORD Xpoint, UWORD Ypoint, UWORD Color)
 {
   if (Xpoint > Paint.Width || Ypoint > Paint.Height) {
@@ -136,11 +114,7 @@ void Paint_SetPixel(UWORD Xpoint, UWORD Ypoint, UWORD Color)
   LCD_DrawPaint(X, Y, Color);
 }
 
-/******************************************************************************
-  function: Clear the color of the picture
-  parameter:
-    Color   :   Painted colors
-******************************************************************************/
+
 void Paint_Clear(UWORD Color)
 {
   LCD_Clear(Color);
@@ -164,14 +138,7 @@ void Paint_ClearWindows(UWORD Xstart, UWORD Ystart, UWORD Xend, UWORD Yend, UWOR
   }
 }
 
-/******************************************************************************
-  function: Draw Point(Xpoint, Ypoint) Fill the color
-  parameter:
-    Xpoint    :   The Xpoint coordinate of the point
-    Ypoint    :   The Ypoint coordinate of the point
-    Color   :   Set color
-    Dot_Pixel : point size
-******************************************************************************/
+
 void Paint_DrawPoint(UWORD Xpoint, UWORD Ypoint, UWORD Color,
                      DOT_PIXEL Dot_Pixel, DOT_STYLE DOT_STYLE)
 {
@@ -199,15 +166,7 @@ void Paint_DrawPoint(UWORD Xpoint, UWORD Ypoint, UWORD Color,
   }
 }
 
-/******************************************************************************
-  function: Draw a line of arbitrary slope
-  parameter:
-    Xstart ：Starting Xpoint point coordinates
-    Ystart ：Starting Xpoint point coordinates
-    Xend   ：End point Xpoint coordinate
-    Yend   ：End point Ypoint coordinate
-    Color  ：The color of the line segment
-******************************************************************************/
+
 void Paint_DrawLine(UWORD Xstart, UWORD Ystart, UWORD Xend, UWORD Yend,
                     UWORD Color, LINE_STYLE Line_Style, DOT_PIXEL Dot_Pixel)
 {
@@ -255,16 +214,7 @@ void Paint_DrawLine(UWORD Xstart, UWORD Ystart, UWORD Xend, UWORD Yend,
   }
 }
 
-/******************************************************************************
-  function: Draw a rectangle
-  parameter:
-    Xstart ：Rectangular  Starting Xpoint point coordinates
-    Ystart ：Rectangular  Starting Xpoint point coordinates
-    Xend   ：Rectangular  End point Xpoint coordinate
-    Yend   ：Rectangular  End point Ypoint coordinate
-    Color  ：The color of the Rectangular segment
-    Filled : Whether it is filled--- 1 solid 0：empty
-******************************************************************************/
+
 void Paint_DrawRectangle(UWORD Xstart, UWORD Ystart, UWORD Xend, UWORD Yend,
                          UWORD Color, DRAW_FILL Filled, DOT_PIXEL Dot_Pixel)
 {
@@ -287,16 +237,7 @@ void Paint_DrawRectangle(UWORD Xstart, UWORD Ystart, UWORD Xend, UWORD Yend,
   }
 }
 
-/******************************************************************************
-  function: Use the 8-point method to draw a circle of the
-            specified size at the specified position->
-  parameter:
-    X_Center  ：Center X coordinate
-    Y_Center  ：Center Y coordinate
-    Radius    ：circle Radius
-    Color     ：The color of the ：circle segment
-    Filled    : Whether it is filled: 1 filling 0：Do not
-******************************************************************************/
+
 void Paint_DrawCircle(UWORD X_Center, UWORD Y_Center, UWORD Radius,
                       UWORD Color, DRAW_FILL  Draw_Fill , DOT_PIXEL Dot_Pixel)
 {
@@ -356,16 +297,7 @@ void Paint_DrawCircle(UWORD X_Center, UWORD Y_Center, UWORD Radius,
   }
 }
 
-/******************************************************************************
-  function: Show English characters
-  parameter:
-    Xpoint           ：X coordinate
-    Ypoint           ：Y coordinate
-    Acsii_Char       ：To display the English characters
-    Font             ：A structure pointer that displays a character size
-    Color_Background : Select the background color of the English character
-    Color_Foreground : Select the foreground color of the English character
-******************************************************************************/
+
 void Paint_DrawChar(UWORD Xpoint, UWORD Ypoint, const char Acsii_Char,
                     sFONT* Font, UWORD Color_Background, UWORD Color_Foreground)
 {
@@ -404,16 +336,7 @@ void Paint_DrawChar(UWORD Xpoint, UWORD Ypoint, const char Acsii_Char,
   }/* Write all */
 }
 
-/******************************************************************************
-  function: Display the string
-  parameter:
-    Xstart           ：X coordinate
-    Ystart           ：Y coordinate
-    pString          ：The first address of the English string to be displayed
-    Font             ：A structure pointer that displays a character size
-    Color_Background : Select the background color of the English character
-    Color_Foreground : Select the foreground color of the English character
-******************************************************************************/
+
 void Paint_DrawString_EN(UWORD Xstart, UWORD Ystart, const char * pString,
                          sFONT* Font, UWORD Color_Background, UWORD Color_Foreground )
 {
@@ -448,17 +371,7 @@ void Paint_DrawString_EN(UWORD Xstart, UWORD Ystart, const char * pString,
 }
 
 
-/******************************************************************************
-  function: Display the string
-  parameter:
-    Xstart           ：X coordinate
-    Ystart           ：Y coordinate
-    pString          ：The first address of the Chinese string and English
-                        string to be displayed
-    Font             ：A structure pointer that displays a character size
-    Color_Background : Select the background color of the English character
-    Color_Foreground : Select the foreground color of the English character
-******************************************************************************/
+
 void Paint_DrawString_CN(UWORD Xstart, UWORD Ystart, const char * pString, cFONT* font, UWORD Color_Background, UWORD Color_Foreground)
 {
  const unsigned char* p_text = pString;
@@ -522,16 +435,7 @@ void Paint_DrawString_CN(UWORD Xstart, UWORD Ystart, const char * pString, cFONT
 }
 
 
-/******************************************************************************
-  function: Display nummber
-  parameter:
-    Xstart           ：X coordinate
-    Ystart           : Y coordinate
-    Nummber          : The number displayed
-    Font             ：A structure pointer that displays a character size
-    Color_Background : Select the background color of the English character
-    Color_Foreground : Select the foreground color of the English character
-******************************************************************************/
+
 #define  ARRAY_LEN 255
 void Paint_DrawNum(UWORD Xpoint, UWORD Ypoint, int32_t Nummber,
                    sFONT* Font, UWORD Color_Background, UWORD Color_Foreground )
@@ -564,15 +468,7 @@ void Paint_DrawNum(UWORD Xpoint, UWORD Ypoint, int32_t Nummber,
   Paint_DrawString_EN(Xpoint, Ypoint, (const char*)pStr, Font, Color_Background, Color_Foreground);
 }
 
-/******************************************************************************
-  function: Display time
-  parameter:
-    Xstart           ：X coordinate
-    Ystart           : Y coordinate
-    pTime            : Time-related structures
-    Font             ：A structure pointer that displays a character size
-    Color            : Select the background color of the English character
-******************************************************************************/
+
 void Paint_DrawTime(UWORD Xstart, UWORD Ystart, PAINT_TIME *pTime, sFONT* Font,
                     UWORD Color_Background, UWORD Color_Foreground)
 {
@@ -591,15 +487,7 @@ void Paint_DrawTime(UWORD Xstart, UWORD Ystart, PAINT_TIME *pTime, sFONT* Font,
   Paint_DrawChar(Xstart + Dx * 6                  , Ystart, value[pTime->Sec % 10] , Font, Color_Background, Color_Foreground);
 }
 
-/******************************************************************************
-  function: Display image
-  parameter:
-    image            ：Image start address
-    xStart           : X starting coordinates
-    yStart           : Y starting coordinates
-    xEnd             ：Image width
-    yEnd             : Image height
-******************************************************************************/
+
 void Paint_DrawImage(const unsigned char *image, UWORD xStart, UWORD yStart, UWORD W_Image, UWORD H_Image)
 {
   int i, j;
